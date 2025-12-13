@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "dad-joke-agent-365",
+  "packageName": "com.agents.dadjoke",
+  "developer": {
+    "name": "Microsoft 365 Agents SDK",
+    "websiteUrl": "https://github.com/microsoft/agents",
+    "privacyUrl": "https://privacy.microsoft.com",
+    "termsOfUseUrl": "https://www.microsoft.com/servicesagreement"
+  },
+  "name": {
+    "short": "Dad Joke Agent",
+    "full": "Dad Joke Agent - Microsoft 365 Agents SDK"
+  },
+  "description": {
+    "short": "Your source for quality dad jokes!",
+    "full": "A fun and friendly agent that delivers dad jokes on demand. Ask for random jokes or request jokes about specific topics. Supports agent-to-agent handoff from Copilot Studio."
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#FFD700",
+  "bots": [
+    {
+      "botId": "dad-joke-agent-365",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "supportsCalling": false,
+      "supportsVideo": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal",
+            "team",
+            "groupchat"
+          ],
+          "commands": [
+            {
+              "title": "help",
+              "description": "Get help and learn what I can do"
+            },
+            {
+              "title": "joke",
+              "description": "Get a random dad joke"
+            },
+            {
+              "title": "joke about [topic]",
+              "description": "Get a dad joke about a specific topic"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "localhost",
+    "*.devtunnels.ms"
+  ],
+  "webApplicationInfo": {
+    "id": "dad-joke-agent-365",
+    "resource": "api://{BASE_URL}"
+  },
+  "activities": {
+    "activityTypes": [
+      {
+        "type": "message",
+        "description": "Receive and respond to user messages with dad jokes",
+        "templateText": "{actor} asked for a joke"
+      },
+      {
+        "type": "conversationUpdate",
+        "description": "Welcome new members to the conversation"
+      },
+      {
+        "type": "handoff",
+        "description": "Accept handoff from other agents in Copilot Studio",
+        "context": {
+          "request": "string",
+          "message": "string",
+          "metadata": "object"
+        }
+      },
+      {
+        "type": "event",
+        "description": "Handle system events including handoff events"
+      }
+    ]
+  },
+  "copilotExtensions": {
+    "declarativeAgents": [
+      {
+        "id": "dad-joke-agent",
+        "file": "declarative-agent.json"
+      }
+    ]
+  }
+}

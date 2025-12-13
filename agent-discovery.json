@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/agent-discovery/v1.0/schema.json",
+  "version": "1.0",
+  "agent": {
+    "name": "Dad Joke Agent",
+    "description": "A fun agent that delivers dad jokes on demand",
+    "id": "dad-joke-agent-365",
+    "capabilities": {
+      "accepts_handoff": true,
+      "can_initiate_handoff": false,
+      "supports_activities": [
+        "message",
+        "conversationUpdate",
+        "event",
+        "handoff",
+        "invoke"
+      ]
+    },
+    "endpoints": {
+      "messaging": "{BASE_URL}/api/messages",
+      "card": "{BASE_URL}/api/card",
+      "manifest": "{BASE_URL}/api/manifest",
+      "declarative": "{BASE_URL}/api/declarative-agent"
+    },
+    "handoff": {
+      "accepts_handoff": true,
+      "handoff_context_schema": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "Specific joke request from the user"
+          },
+          "message": {
+            "type": "string",
+            "description": "General message or context"
+          },
+          "userMessage": {
+            "type": "string",
+            "description": "Alternative field for user message"
+          },
+          "text": {
+            "type": "string",
+            "description": "Alternative field for text content"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional metadata from the handoff"
+          }
+        }
+      }
+    }
+  },
+  "card": {
+    "$ref": "{BASE_URL}/api/card"
+  }
+}

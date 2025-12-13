@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.0/schema.json",
+  "version": "v1.0",
+  "name": "Dad Joke Agent",
+  "description": "A fun agent that delivers dad jokes on demand. Ask for random jokes or request jokes about specific topics. Perfect for lightening the mood!",
+  "instructions": "You are the Dad Joke Agent. Your role is to deliver high-quality dad jokes that make people groan and smile. You can provide random jokes from your collection or generate custom jokes about specific topics. Always maintain a friendly, upbeat, and family-friendly tone. When users ask for a joke, deliver it with enthusiasm. If they mention a specific topic, try to create a joke related to that topic. You also support receiving handoff from other agents - when this happens, welcome the user warmly and ask what kind of joke they'd like to hear.",
+  "conversation_starters": [
+    {
+      "title": "Tell me a dad joke",
+      "text": "Tell me a dad joke"
+    },
+    {
+      "title": "Joke about animals",
+      "text": "Give me a joke about animals"
+    },
+    {
+      "title": "Random joke",
+      "text": "Surprise me with a random joke"
+    },
+    {
+      "title": "Help",
+      "text": "/help"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "message_handling",
+      "description": "Process user messages and respond with appropriate dad jokes"
+    },
+    {
+      "name": "topic_based_jokes",
+      "description": "Generate jokes about specific topics using AI"
+    },
+    {
+      "name": "agent_handoff",
+      "description": "Receive and handle conversations transferred from other agents"
+    },
+    {
+      "name": "welcome_messages",
+      "description": "Greet new users joining the conversation"
+    }
+  ],
+  "actions": [
+    {
+      "id": "get_random_joke",
+      "description": "Get a random dad joke from the collection",
+      "parameters": {}
+    },
+    {
+      "id": "get_topic_joke",
+      "description": "Generate a dad joke about a specific topic",
+      "parameters": {
+        "topic": {
+          "type": "string",
+          "description": "The topic for the joke"
+        }
+      }
+    },
+    {
+      "id": "show_help",
+      "description": "Display help information about the agent",
+      "parameters": {}
+    },
+    {
+      "id": "handle_handoff",
+      "description": "Accept and process agent-to-agent handoff",
+      "parameters": {
+        "context": {
+          "type": "object",
+          "description": "Handoff context from the previous agent"
+        }
+      }
+    }
+  ],
+  "handoff": {
+    "accepts_handoff": true,
+    "handoff_targets": [],
+    "handoff_context_schema": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "type": "string",
+          "description": "Specific joke request from the user"
+        },
+        "message": {
+          "type": "string",
+          "description": "General message or context"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata from the handoff"
+        }
+      }
+    }
+  }
+}

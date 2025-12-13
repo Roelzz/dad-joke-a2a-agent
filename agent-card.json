@@ -1,0 +1,67 @@
+{
+  "protocolVersion": "1.0",
+  "name": "Dad Joke Agent",
+  "description": "A fun agent that delivers dad jokes on demand. Ask for random jokes or request jokes about specific topics. Perfect for lightening the mood!",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "{BASE_URL}/api/messages",
+      "protocolBinding": "JSONRPC"
+    }
+  ],
+  "provider": {
+    "organization": "Microsoft 365 Agents SDK",
+    "url": "{BASE_URL}"
+  },
+  "documentationUrl": "{BASE_URL}/api/manifest",
+  "iconUrl": "{BASE_URL}/icon.png",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "securitySchemes": {},
+  "security": [],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "supportsExtendedAgentCard": true,
+  "skills": [
+    {
+      "id": "random_joke",
+      "name": "Random Dad Joke",
+      "description": "Get a random dad joke from the collection",
+      "tags": ["joke", "random", "humor", "dad-joke"],
+      "examples": [
+        "Tell me a dad joke",
+        "Give me a joke",
+        "Make me laugh",
+        "Random joke please"
+      ],
+      "outputModes": ["text/plain"]
+    },
+    {
+      "id": "topic_joke",
+      "name": "Topic-Based Dad Joke",
+      "description": "Generate a dad joke about a specific topic using AI",
+      "tags": ["joke", "topic", "custom", "ai", "dad-joke"],
+      "examples": [
+        "Tell me a joke about cats",
+        "Give me a joke about programming",
+        "Joke about Philips",
+        "Make a dad joke about coffee"
+      ],
+      "outputModes": ["text/plain"]
+    },
+    {
+      "id": "help",
+      "name": "Get Help",
+      "description": "Display help information about the agent's capabilities",
+      "tags": ["help", "info", "instructions"],
+      "examples": [
+        "/help",
+        "help"
+      ],
+      "outputModes": ["text/plain"]
+    }
+  ]
+}
